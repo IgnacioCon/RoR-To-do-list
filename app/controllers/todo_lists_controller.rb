@@ -6,11 +6,25 @@ class TodoListsController < ApplicationController
   # GET /todo_lists.json
   def index
     @todo_lists = TodoList.where(userid: current_user.id)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @todo_lists.to_csv, filename: "lists-#{Date.today}.csv" }
+      format.pdf { render :pdf => "lists.pdf", :template => 'todo_lists/index.html.erb', :layout => 'pdf.html.erb'}
+    end
   end
 
   # GET /todo_lists/1
   # GET /todo_lists/1.json
   def show
+    
+      @list = TodoList.where(id: params[:id])
+
+      respond_to do |format|
+        format.html
+        format.csv { send_data @list.to_csv, filename: "list-#{Date.today}.csv" }
+        format.pdf { render :pdf => "lists.pdf", :template => 'todo_lists/show.html.erb', :layout => 'pdf.html.erb'}
+      end
   end
 
   # GET /todo_lists/new
