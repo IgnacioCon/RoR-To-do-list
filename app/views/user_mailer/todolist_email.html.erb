@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello!</h1>
+
+    <h2>Here are your lists for this week!</h2>
+    <p>
+      Follow this link to see them on the site: <%= @url %>.
+    </p>
+    <h3>Todo Lists</h3>
+
+    <table>
+    <thead>
+        <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Userid</th>
+        <th colspan="3"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @todo_lists.each do |todo_list| %>
+        <tr>
+            <td><%= todo_list.title %></td>
+            <td><%= todo_list.description %></td>
+            <td><%= todo_list.userid %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+
+  </body>
+</html>
