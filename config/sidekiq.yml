@@ -1,0 +1,10 @@
+:concurrency: 25
+:pidfile: ./tmp/pids/sidekiq.pid
+:logfile: #./log/sidekiq.log
+:queues:
+ - default
+ - mailers
+:schedule:
+  first:
+    cron: '* 8 * * 1 *'   # Runs every Monday at 8 AM
+    class: MailWorker

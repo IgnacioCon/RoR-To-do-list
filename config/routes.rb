@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+  
   resources :todo_lists do
     resources :todo_items do 
       member do
