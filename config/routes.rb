@@ -10,8 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
-
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root 'pages#home'
   get '/lists', to: 'todo_lists#index'
   get '/indlist', to: 'pages#indlist'
