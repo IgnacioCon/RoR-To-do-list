@@ -8,7 +8,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  private
+
   def has_image_attached
     if !avatar.attached?
       errors.add(:avatar, "Please upload a picture!")
