@@ -1,33 +1,33 @@
-<p id="notice"><%= notice %></p>
+
+<div class="container">
 
 <h1>Todo Lists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Userid</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <%= link_to 'New Todo List', new_todo_list_path, class: 'btn btn-primary' %>
 
-  <tbody>
-    <% @todo_lists.each do |todo_list| %>
-      <tr>
-        <td><%= todo_list.title %></td>
-        <td><%= todo_list.description %></td>
-        <td><%= todo_list.userid %></td>
-        <td><%= link_to 'Show', todo_list %></td>
-        <td><%= link_to 'Edit', edit_todo_list_path(todo_list) %></td>
-        <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%= link_to 'Create CSV', request.url + '.csv', class: 'btn btn-success'  %>
+  <%= link_to 'Create PDF' , request.url + '.pdf', class: 'btn btn-danger' %>
+</div>
+<br />
+
+<% @todo_lists.each do |todo_list| %>
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= todo_list.title %></h5>
+      <p class="card-text"><%= todo_list.description %></p>
+      <td><%= link_to 'Show', todo_list, class: 'btn btn-outline-secondary' %></td>
+      <td><%= link_to 'Edit', edit_todo_list_path(todo_list), class: 'btn btn-outline-secondary' %></td>
+      <td><%= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' %></td>
+    </div>
+  </div>
+<% end %>
+
 
 <br>
 
-<%= link_to 'New Todo List', new_todo_list_path %>
-<%= link_to 'Create CSV', request.url + '.csv' %>
-<%= link_to 'Create PDF' , request.url + '.pdf' %>
+
+
+
+</div>
+

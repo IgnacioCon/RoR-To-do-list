@@ -1,12 +1,10 @@
 <% provide(:title, "Home") %>
 
-<div class="center jumbotron">
-    <h1>Simple ToDo App</h1>
-    <h2>Keep your busy life organized!</h2>
-
-    <% if user_signed_in? %>
-     <%= link_to "Go to your Lists!", lists_path, class: "btn btn-lg btn-primary"%>
-    <% else %>
-     <%= link_to "Sign up now!", new_user_registration_path , class: "btn btn-lg btn-primary"  %>
-    <% end %>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container-fluid">
+        <h1 class="display-4">Simple ToDo App</h1>
+        <p class="lead">Keep your busy life organized!</p>
+        <%= link_to "Get Started!", lists_path, class: "btn btn-outline-primary btn-lg"%>
+    </div>
 </div>
+

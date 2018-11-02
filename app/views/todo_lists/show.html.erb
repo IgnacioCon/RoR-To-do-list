@@ -1,24 +1,46 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @todo_list.title %>
-</p>
+<div class="container">
 
-<p>
-  <strong>Description:</strong>
-  <%= @todo_list.description %>
-</p>
+<br />
 
-<div id="todo_items_wrapper">
-  <%= render @todo_list.todo_items %>
-  <div id="form">
-    <%= render "todo_items/form" %>
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>Title:</strong>
+      <%= @todo_list.title %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= @todo_list.description %>
+    </p>
+  </div>
+  
+  <div class="col-md-6">
+<br />
+    <%= link_to 'Create CSV', request.url + '.csv', class: 'btn btn-success' %>
+  <%= link_to 'Create PDF' , request.url + '.pdf', class: 'btn btn-danger' %>
+
+
   </div>
 </div>
 
-<%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |
-<%= link_to 'Back', todo_lists_path %>
 
-<%= link_to 'Create CSV', request.url + '.csv' %>
-<%= link_to 'Create PDF' , request.url + '.pdf' %>
+
+  <div id="todo_items_wrapper">
+    <%= render @todo_list.todo_items %>
+    <br />
+    <div id="form-group">
+      <%= render "todo_items/form" %>
+    </div>
+
+  </div>
+
+  <br />
+  <%= link_to 'Edit', edit_todo_list_path(@todo_list), class: 'btn btn-outline-secondary' %> 
+  <%= link_to 'Back', todo_lists_path, class: 'btn btn-outline-secondary' %>
+
+
+
+
+</div>
